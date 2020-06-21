@@ -15,15 +15,17 @@ import com.example.splash.helpers.QueueUtils;
 public class Doctores {
     public String first_name;
     public String last_name;
-    public Doctores(String _first_name, String _last_name){
+    public String url_image;
+    public Doctores(String _first_name, String _last_name, String _url_image){
         this.first_name=_first_name;
         this.last_name=_last_name;
+        this.url_image=_url_image;
     }
     public static ArrayList getCollection(){
         ArrayList<Doctores> collection=new ArrayList<>();
-        collection.add(new Doctores("Pepe","Perez"));
-        collection.add(new Doctores("Maria","Mesa"));
-        collection.add(new Doctores("Alex","Quispe"));
+        collection.add(new Doctores("Pepe","Perez",""));
+        collection.add(new Doctores("Maria","Mesa",""));
+        collection.add(new Doctores("Alex","Quispe",""));
         return collection;
     }
 
@@ -43,7 +45,7 @@ public class Doctores {
                                 for (int i=0; i < list.length(); i++) {
                                     JSONObject o = list.getJSONObject(i);
                                     doctores.add(new Doctores(o.getString("first_name"),
-                                            o.getString("last_name")));
+                                            o.getString("last_name"),o.getString("avatar")));
                                 }
 
                             } catch (JSONException e) {
